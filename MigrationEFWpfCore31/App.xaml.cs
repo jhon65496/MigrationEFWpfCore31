@@ -38,13 +38,11 @@ namespace MigrationEFWpfCore31
                        .AddDbContext<ContextDBBookinist>(opt =>
                        {
                            string connectionstr = hostContext.Configuration.GetConnectionString("ConnectionString");
-
-
                            Debug.WriteLine("=== === === ===");
                            Debug.WriteLine(connectionstr);
                            Debug.WriteLine("=== === === ===");
+
                            opt.UseSqlServer(hostContext.Configuration.GetConnectionString("ConnectionString"));
-                           
                        } 
                     ));
         
