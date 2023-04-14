@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,8 +37,10 @@ namespace MigrationEFWpfCore31
                 .ConfigureServices(
                     (hostContext, services) => services
                        .AddDbContext<ContextDBBookinist>(opt =>
-                       {                                                     
-                           string connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection");
+                       {
+                           string path = Directory.GetCurrentDirectory();
+                           string connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection")
+                           .Replace("[DataDirectory]", path);
                            // Debug.WriteLine("=== === === ===");                           
                            opt.UseSqlServer(connectionString);                           
                        } 
