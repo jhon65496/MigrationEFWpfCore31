@@ -37,13 +37,14 @@ namespace MigrationEFWpfCore31
                     (hostContext, services) => services
                        .AddDbContext<ContextDBBookinist>(opt =>
                        {
-                           string connectionstr = hostContext.Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
+                           // string connectionstr = hostContext.Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
                            Debug.WriteLine("=== === === ===");
-                           Debug.WriteLine(connectionstr);
+                           // Debug.WriteLine(connectionstr);
                            Debug.WriteLine("=== === === ===");
-                           string connectionstr2 = hostContext.Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
+                          // string connectionstr2 = hostContext.Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
+                           string connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection");
 
-                           opt.UseSqlServer(connectionstr2);
+                           opt.UseSqlServer(connectionString);
                            
                        } 
                     ));
